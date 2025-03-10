@@ -1,0 +1,40 @@
+<div id="fakultet">
+    <form onsubmit="return false;">
+        <input name="tall" placeholder="Tall" type="number">
+        <button>Regn ut fakultet</button>
+    </form>
+    Resultatet er: <span class="resultat"></span>
+    <p>
+        <label for="fizzbuzz-input">Enter a number for FizzBuzz:</label>
+        <input id="fizzbuzz-input" type="number" placeholder="Number">
+        <button id="fizzbuzz-button">Calculate FizzBuzz</button>
+
+        <span class="fizzbuzz-result"></span>
+        <script type="module">
+            import { fizzBuzz } from './fizzbuzz.js';
+
+            document.querySelector('#fizzbuzz-button').addEventListener('click', () => {
+                const input = document.querySelector('#fizzbuzz-input').value;
+                const result = fizzBuzz(parseInt(input)); // Use the input value for FizzBuzz calculation
+                document.querySelector('.fizzbuzz-result').textContent = result;
+            });
+        </script>
+
+
+    </p>
+    <script type="module">
+        import { fakultet } from './fakultet.js';
+
+        function regnUt(evt) {
+            evt.preventDefault();
+            const input = document.querySelector('#fakultet input');
+            const output = document.querySelector('#fakultet .resultat');
+            const tall = parseInt(input.value);
+            output.textContent = fakultet(tall);
+        }
+
+        document.querySelector('#fakultet button')
+            .addEventListener('click', e => regnUt(e));
+    </script>
+
+</div>
